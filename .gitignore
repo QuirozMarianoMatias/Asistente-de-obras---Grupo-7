@@ -1,0 +1,10 @@
+# Credenciales: nunca se suben
+.env
+
+# Archivos que se generan al usar la app
+data/registro_*.csv
+data/obras_puntuadas_original.csv
+
+# Basura de Python
+__pycache__/
+*.pyc

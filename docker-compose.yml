@@ -1,0 +1,17 @@
+services:
+  interfaz:
+    build: .
+    ports:
+      - "7860:7860"
+    env_file: .env
+    volumes:
+      - ./data:/app/data        # datos, registro de avisos y lecturas viven fuera de la imagen
+    restart: unless-stopped
+
+  alertas:                      # ejecución puntual: docker compose run --rm alertas
+    build: .
+    command: python run_alertas.py --maximo 5
+    env_file: .env
+    volumes:
+      - ./data:/app/data
+    profiles: ["job"]
